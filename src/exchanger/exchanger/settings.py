@@ -26,7 +26,8 @@ SECRET_KEY = 'django-insecure-g65b8&4kj-q&d5vci&wkios=0j_iw1rql-gj%k7+qet@pd_@0q
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost',
+                 'e2c4-2a01-4f9-2a-427-00-2.ngrok-free.app']
 
 
 # Application definition
@@ -41,13 +42,30 @@ INSTALLED_APPS = [
     'rest_framework',
     'drf_yasg',
     'main',
+    'corsheaders'
 ]
 
-CORS_ALLOW_ALL_ORIGINS = True
+CORS_ORIGIN_ALLOW_ALL = True
 CORS_ALLOW_CREDENTIALS = True
 
+CORS_ALLOW_HEADERS = [
+    'accept',
+    'accept-encoding',
+    'authorization',
+    'content-type',
+    'dnt',
+    'origin',
+    'user-agent',
+    'x-csrftoken',
+    'x-requested-with',
+    'interval',
+    'period',
+    'currency-pair',
+    'ngrok-skip-browser-warning'
+]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
